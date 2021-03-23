@@ -14,8 +14,6 @@ public class move : MonoBehaviour {
     private Rigidbody body;
     private Renderer render;
 
-    public float xForce = 10.0f;  
-    public float zForce = 10.0f;  
     public float yForce = 400.0f;  
     private bool isColliding = false;
     private Vector3 initVel;
@@ -33,34 +31,17 @@ public class move : MonoBehaviour {
           render.material.color = UnityEngine.Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
           bounceAmt = 0;
     }  
-    
+
     void Update () {  //Update is called once per frame  
         isColliding = false; //This is to prevent the ball from registering multiple collisions as it lands
 
-        float x = 0.0f;  
-        if (Input.GetKey (KeyCode.A)) {  
-            x = x - xForce;  
-        }  
-  
-        if (Input.GetKey (KeyCode.D)) {  
-            x = x + xForce;  
-        }  
-        float z = 0.0f;  
-        if (Input.GetKey (KeyCode.S)) {  
-            z = z - zForce;  
-        }  
-  
-        if (Input.GetKey (KeyCode.W)) {  
-            z = z + zForce;  
-        }  
-
-        float y= 0.0f;  
+        float y = 0.0f;  
         if (Input.GetKeyDown (KeyCode.Space)) {  
             y = yForce;  
             bounceAmt = 0;
         }  
   
-        body.AddForce(x, y, z);  
+        body.AddForce(0.0f, y, 0.0f); 
         lastVel = body.velocity;
     }  
 
