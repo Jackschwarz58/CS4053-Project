@@ -1,7 +1,7 @@
 /*
 ---Sphere Movement Script---
-Version: 0.0.1
-Last Modified: 3/19/21 - William
+Version: 0.0.3
+Last Modified: 4/25/21 - William
 */
 using System.Collections;
 using System.Collections.Generic;
@@ -18,6 +18,8 @@ public class BallScript : MonoBehaviour
     public float yForce = 400.0f;
     private Vector3 initVel;
     private Vector3 lastVel;
+
+    public AudioClip sound;
 
     //use this for initialization  
 
@@ -40,10 +42,16 @@ public class BallScript : MonoBehaviour
 
         body.AddForce(0.0f, y, 0.0f);
         lastVel = body.velocity;
+
+        if(transform.position.y < -5)
+        {
+            Object.Destroy(gameObject);
+        }
     }
 
     private void OnCollisionEnter(Collision c)
     {
         render.material.color = UnityEngine.Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
+        AudioSource.PlayClipAtPoint(sound, transform.position, 1.0f);
     }
 }
