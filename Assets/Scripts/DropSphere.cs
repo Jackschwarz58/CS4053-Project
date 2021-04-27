@@ -5,6 +5,7 @@ using UnityEngine;
 public class DropSphere : MonoBehaviour
 {
     public GameObject sphere;
+
     void Start()
     {
 
@@ -13,12 +14,11 @@ public class DropSphere : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
     }
 
     void OnMouseOver()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)))
         {
             Instantiate(sphere, transform.position - new Vector3(0, 1.5f, 0), transform.rotation).GetComponent<Rigidbody>().AddForce(new Vector3(0, -5f, 0));
         }
