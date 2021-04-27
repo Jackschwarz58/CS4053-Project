@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4512213, g: 0.49996424, b: 0.5683012, a: 1}
+  m_IndirectSpecularColor: {r: 0.4512208, g: 0.4999637, b: 0.56830037, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -713,7 +713,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 748787c053627c8449298b63a2407791, type: 3}
---- !u!1001 &7344798767103180530
+--- !u!1001 &8289119276313766676
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -734,7 +734,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7196656518898684350, guid: 73f4f5a2a7f9447bbb631d96bc239433, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.49
+      value: 0.976
       objectReference: {fileID: 0}
     - target: {fileID: 7196656518898684350, guid: 73f4f5a2a7f9447bbb631d96bc239433, type: 3}
       propertyPath: m_LocalPosition.z
@@ -772,13 +772,5 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 13400000, guid: 9a6ba58efd48a429fa8904d35e67dc79, type: 2}
-    - target: {fileID: 7344798765778662163, guid: 73f4f5a2a7f9447bbb631d96bc239433, type: 3}
-      propertyPath: m_AngularDrag
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 7344798765778662163, guid: 73f4f5a2a7f9447bbb631d96bc239433, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73f4f5a2a7f9447bbb631d96bc239433, type: 3}
