@@ -63,6 +63,8 @@ public class BallScript : MonoBehaviour
         lightGameObject.transform.position = new Vector3(body.transform.position.x, body.transform.position.y, body.transform.position.z);
         if (transform.position.y < -5)
         {
+            Destroy(lightComp);
+            Destroy(lightGameObject);
             Object.Destroy(gameObject);
         }
 

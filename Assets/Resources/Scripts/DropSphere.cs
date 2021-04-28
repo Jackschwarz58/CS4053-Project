@@ -9,10 +9,13 @@ public class DropSphere : MonoBehaviour
     public GameObject masterController;
     public AudioClip sound;
 
+    public bool paused;
+
     public int dropBeat; // Drops an object every x beats
     void Start()
     {
-
+        masterController = GameObject.Find("Old Timer Rickward");
+        paused = false;
     }
 
     // Update is called once per frame
@@ -20,7 +23,7 @@ public class DropSphere : MonoBehaviour
     {
 
         int beat = masterController.GetComponent<MasterController>().GetBeat();
-        if(beat % dropBeat == 0)
+        if (beat % dropBeat == 0)
         {
             DropBall();
         }
@@ -36,8 +39,11 @@ public class DropSphere : MonoBehaviour
 
     void DropBall()
     {
-        GameObject ball = Instantiate(sphere, transform.position - new Vector3(0, 1.5f, 0), transform.rotation);
-        ball.GetComponent<Rigidbody>().AddForce(new Vector3(0, -5f, 0));
-        ball.GetComponent<BallScript>().sound = sound;
+        if (!paused)
+        {
+            GameObject ball = Instantiate(sphere, transform.position - new Vector3(0, 1.5f, 0), transform.rotation);
+            ball.GetComponent<Rigidbody>().AddForce(new Vector3(0, -5f, 0));
+            ball.GetComponent<BallScript>().sound = sound;
+        }
     }
 }
