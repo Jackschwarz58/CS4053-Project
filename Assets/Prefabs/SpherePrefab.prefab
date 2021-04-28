@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7344798765778662160}
   - component: {fileID: 7344798765778662163}
   - component: {fileID: 2599860565766324362}
+  - component: {fileID: 6363070029673178218}
   m_Layer: 0
   m_Name: SpherePrefab
   m_TagString: Untagged
@@ -62,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 922049e2c62744d71a1f592320d240f3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -126,3 +127,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   yForce: 400
+--- !u!114 &6363070029673178218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870082895334912647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: 941e442837b804d168285e3c923e42a5, type: 2}
+  isGlobal: 1
+  blendDistance: 0
+  weight: 1
+  priority: 0

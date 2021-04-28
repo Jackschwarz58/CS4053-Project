@@ -5,6 +5,7 @@ using UnityEngine;
 public class DropSphere : MonoBehaviour
 {
     public GameObject sphere;
+
     public GameObject masterController;
     public AudioClip sound;
 
@@ -17,6 +18,7 @@ public class DropSphere : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         int beat = masterController.GetComponent<MasterController>().GetBeat();
         if(beat % dropBeat == 0)
         {
@@ -26,7 +28,7 @@ public class DropSphere : MonoBehaviour
 
     void OnMouseOver()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)))
         {
             DropBall();
         }
