@@ -1,7 +1,7 @@
 /*
 ---Sphere Movement Script---
-Version: 0.0.1
-Last Modified: 3/19/21 - William
+Version: 0.0.3
+Last Modified: 4/25/21 - William
 */
 using System.Collections;
 using System.Collections.Generic;
@@ -26,6 +26,10 @@ public class BallScript : MonoBehaviour
     GameObject lightGameObject;
 
     Light lightComp;
+
+    public AudioClip sound;
+
+
     //use this for initialization  
 
     void Start()
@@ -55,7 +59,14 @@ public class BallScript : MonoBehaviour
 
         body.AddForce(0.0f, y, 0.0f);
         lastVel = body.velocity;
+
         lightGameObject.transform.position = new Vector3(body.transform.position.x, body.transform.position.y, body.transform.position.z);
+        if (transform.position.y < -5)
+        {
+            Object.Destroy(gameObject);
+        }
+
+
     }
 
     private void OnCollisionEnter(Collision c)
@@ -65,6 +76,7 @@ public class BallScript : MonoBehaviour
         render.material.color = color;
 
         setEmissionsColor(color);
+        AudioSource.PlayClipAtPoint(sound, transform.position, 1.0f);
     }
 
     private void setEmissionsColor(Color color)
@@ -102,5 +114,6 @@ public class BallScript : MonoBehaviour
             }
 
         }
+
     }
 }
