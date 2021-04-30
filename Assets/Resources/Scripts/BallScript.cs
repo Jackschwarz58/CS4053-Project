@@ -12,6 +12,7 @@ using UnityEngine;
 public class BallScript : MonoBehaviour
 {
 
+    public GameObject ripple;
     private Rigidbody body;
     private Renderer render;
 
@@ -34,6 +35,9 @@ public class BallScript : MonoBehaviour
 
     void Start()
     {
+        var em = ripple.GetComponent<ParticleSystem>().emission;
+        em.enabled = false;
+
         body = GetComponent<Rigidbody>();
         render = GetComponent<Renderer>();
         emitColor = GetComponent<Renderer>().material;
@@ -70,7 +74,11 @@ public class BallScript : MonoBehaviour
 
 
     }
-
+    IEnumerator deleteRipple(GameObject g)
+    {
+        yield return new WaitForSeconds(1.5f);
+        Destroy(g);
+    }
     private void OnCollisionEnter(Collision c)
     {
 
@@ -78,7 +86,16 @@ public class BallScript : MonoBehaviour
         render.material.color = color;
 
         setEmissionsColor(color);
-        AudioSource.PlayClipAtPoint(sound, transform.position, 1.0f);
+
+        var em = ripple.GetComponent<ParticleSystem>().emission;
+        var emMain = ripple.GetComponent<ParticleSystem>().main;
+
+        em.enabled = true;
+        emMain.startColor = render.material.color;
+
+        GameObject g = Instantiate(ripple, c.gameObject.transform.position, transform.rotation);
+        StartCoroutine(deleteRipple(g));
+        AudioSource.PlayClipAtPoint(sound, 0.9f * Camera.main.transform.position + .1f * transform.position, 10f);
     }
 
     private void setEmissionsColor(Color color)

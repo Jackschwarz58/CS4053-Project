@@ -8,6 +8,7 @@ public class MenuWatcher : MonoBehaviour
     private bool showGameMenu = false;
     private Vector3 menuPos;
 
+    public GameObject masterController;
     private Vector3 mousePos;
 
     public GameObject spawner;
@@ -27,6 +28,7 @@ public class MenuWatcher : MonoBehaviour
         mousePos = new Vector3();
         menuBounds = new Rect(0, 0, 0, 0);
         cam = Camera.main;
+        masterController = GameObject.Find("Old Timer Rickward");
     }
 
     // Update is called once per frame
@@ -69,7 +71,7 @@ public class MenuWatcher : MonoBehaviour
                 Debug.Log("You Clicked Here: Bass Drum");
                 GameObject g = Instantiate(spawner, cam.ScreenToWorldPoint(new Vector3(menuPos.x, menuPos.y, 15)), transform.rotation * Quaternion.Euler(90f, 0f, 0f));
                 g.transform.Rotate(0f, 0f, 0f);
-                g.GetComponent<DropSphere>().sound = Resources.Load<AudioClip>("Sounds/bass");
+                g.GetComponent<DropSphere>().sound = Resources.Load<AudioClip>("Sounds/bassSFX");
                 g.GetComponent<DropSphere>().dropBeat = 60;
                 showGameMenu = false;
                 return;
@@ -80,7 +82,7 @@ public class MenuWatcher : MonoBehaviour
             {
                 Debug.Log("You Clicked Here: Snare");
                 GameObject g = Instantiate(spawner, cam.ScreenToWorldPoint(new Vector3(menuPos.x, menuPos.y, 15)), transform.rotation * Quaternion.Euler(90f, 0f, 0f));
-                g.GetComponent<DropSphere>().sound = Resources.Load<AudioClip>("Sounds/snare");
+                g.GetComponent<DropSphere>().sound = Resources.Load<AudioClip>("Sounds/snareSFX");
                 g.GetComponent<DropSphere>().dropBeat = 60;
                 g.transform.Rotate(0f, 0f, 0f);
                 showGameMenu = false;
@@ -91,7 +93,7 @@ public class MenuWatcher : MonoBehaviour
             {
                 Debug.Log("You Clicked Here: Cymbal");
                 GameObject g = Instantiate(spawner, cam.ScreenToWorldPoint(new Vector3(menuPos.x, menuPos.y, 15)), transform.rotation * Quaternion.Euler(90f, 0f, 0f));
-                g.GetComponent<DropSphere>().sound = Resources.Load<AudioClip>("Sounds/hi hat");
+                g.GetComponent<DropSphere>().sound = Resources.Load<AudioClip>("Sounds/hi_hatSFX");
                 g.GetComponent<DropSphere>().dropBeat = 60;
                 g.transform.Rotate(0f, 0f, 0f);
                 showGameMenu = false;
@@ -113,17 +115,17 @@ public class MenuWatcher : MonoBehaviour
                 Debug.Log("You Clicked Here: Clap");
                 GameObject g = Instantiate(spawner, cam.ScreenToWorldPoint(new Vector3(menuPos.x, menuPos.y, 15)), transform.rotation * Quaternion.Euler(90f, 0f, 0f));
                 g.transform.Rotate(0f, 0f, 0f);
-                g.GetComponent<DropSphere>().sound = Resources.Load<AudioClip>("Sounds/clap");
+                g.GetComponent<DropSphere>().sound = Resources.Load<AudioClip>("Sounds/clapSFX");
                 g.GetComponent<DropSphere>().dropBeat = 60;
                 showGameMenu = false;
                 return;
             }
-            if (GUI.Button(new Rect(x + 97, y + 68, 72, 20), "Kick"))
+            if (GUI.Button(new Rect(x + 97, y + 68, 72, 20), "Crash"))
             {
                 Debug.Log("You Clicked Here: Kick");
                 GameObject g = Instantiate(spawner, cam.ScreenToWorldPoint(new Vector3(menuPos.x, menuPos.y, 15)), transform.rotation * Quaternion.Euler(90f, 0f, 0f));
                 g.transform.Rotate(0f, 0f, 0f);
-                g.GetComponent<DropSphere>().sound = Resources.Load<AudioClip>("Sounds/kick");
+                g.GetComponent<DropSphere>().sound = Resources.Load<AudioClip>("Sounds/crashSFX");
                 g.GetComponent<DropSphere>().dropBeat = 60;
                 showGameMenu = false;
                 return;
@@ -133,7 +135,7 @@ public class MenuWatcher : MonoBehaviour
                 Debug.Log("You Clicked Here: Tom");
                 GameObject g = Instantiate(spawner, cam.ScreenToWorldPoint(new Vector3(menuPos.x, menuPos.y, 15)), transform.rotation * Quaternion.Euler(90f, 0f, 0f));
                 g.transform.Rotate(0f, 0f, 0f);
-                g.GetComponent<DropSphere>().sound = Resources.Load<AudioClip>("Sounds/tom");
+                g.GetComponent<DropSphere>().sound = Resources.Load<AudioClip>("Sounds/tomSFX");
                 g.GetComponent<DropSphere>().dropBeat = 60;
                 showGameMenu = false;
                 return;
@@ -145,6 +147,7 @@ public class MenuWatcher : MonoBehaviour
                     obj.GetComponent<DropSphere>().paused = false;
                 }
                 Debug.Log("You Clicked Here: Play");
+                masterController.GetComponent<MasterController>().beat = 0;
                 return;
             }
             if (GUI.Button(new Rect(x + 100, y + 282, 70, 20), "Pause"))

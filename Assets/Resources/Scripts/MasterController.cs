@@ -5,19 +5,29 @@ using UnityEngine;
 public class MasterController : MonoBehaviour
 {
     public int BPM = 60; // Beats per minute
-    private int beat = -1;
+    public int beat = -1;
 
     public List<AudioClip> ogSound;
+
+    public bool drop;
     // Start is called before the first frame update
     void Start()
     {
-
+        drop = true;
     }
 
     // Update is called once per frame
     void Update()
     {
         beat++;
+        Debug.Log(beat);
+        drop = true;
+        if (beat >= 600)
+        {
+            beat = 0;
+            drop = false;
+            return;
+        }
         if (Input.GetKey(KeyCode.C))
         {
             ogSound = new List<AudioClip>();

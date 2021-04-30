@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95c9b6e03509e314fa743c56cc2876cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ripple: {fileID: 4777178930090593542, guid: 94ebda851a8744514a67e6d4b6028424, type: 3}
   yForce: 400
   debugOut: 0
   sound: {fileID: 0}

@@ -23,7 +23,8 @@ public class DropSphere : MonoBehaviour
     {
 
         int beat = masterController.GetComponent<MasterController>().GetBeat();
-        if (beat % dropBeat == 0)
+        bool release = masterController.GetComponent<MasterController>().drop;
+        if (beat % dropBeat == 0 && release)
         {
             DropBall();
         }
@@ -44,6 +45,7 @@ public class DropSphere : MonoBehaviour
             GameObject ball = Instantiate(sphere, transform.position - new Vector3(0, 1.5f, 0), transform.rotation);
             ball.GetComponent<Rigidbody>().AddForce(new Vector3(0, -5f, 0));
             ball.GetComponent<BallScript>().sound = sound;
+
         }
     }
 }
